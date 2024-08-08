@@ -1,0 +1,21 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Spheres
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+//RWTexture2D<float4> Result;
+RWStructuredBuffer<float3> Result;
+uniform float Time;
+
+float random(float2 st)
+{
+    return frac(sin(dot(st.xy, float2(12.9898,78.233)) * Time));
+}
+
+[numthreads(64,1,1)]
+void Spheres (uint3 id : SV_DispatchThreadID)
+{
+    float x = random(float2(id.x + 0.5 , 0));
+    float y = random(float2(0, id.x + 0.5));
+    Result[id.x] = float3(x, y, 0) * 5;
+}

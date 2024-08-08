@@ -2,6 +2,10 @@
  shader学习工程  
  
 ---
+### ComputeShader
+
+
+---
 ### SelectionOutline 选中的物体进行描边
 - 创建OutlineRenderFeature，在OutlineRenderPass中，将选中的物体画到RenderTexture(带alpha)中
 - 采样像素周围8方向RT的alpha值，取最大值
