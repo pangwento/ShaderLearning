@@ -1,4 +1,4 @@
-Shader "Unlit/SDF_Circle"
+Shader "Base/SDF_Circle"
 {
     Properties
     {
