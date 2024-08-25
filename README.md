@@ -1,6 +1,18 @@
 # ShaderLearning
  shader学习工程  
- 
+
+--- 
+### SDF  
+```hlsl
+// 圆 
+float Circle(float2 st, float r)
+{
+    const float2 dist = st - float2(0.5, 0.5);
+    return 1 - smoothstep(r - r*0.01, r + r*0.01, dot(dist, dist) * 4);
+}
+```
+<img width="554" alt="image" src="https://github.com/user-attachments/assets/63c0cac2-f7c0-4cd1-a09f-1874bfa8574e">
+
 ---
 ### ComputeShader 计算着色器
 - kernel  计算函数
