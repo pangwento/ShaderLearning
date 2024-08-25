@@ -8,7 +8,7 @@
 - Dispatch  执行
 - 线程和线程组的ID
 - GetData 从buffer中获取数据写回到ram中
-<img width="554" alt="image" src="https://github.com/user-attachments/assets/67db72c0-cece-4de8-8e4f-13174dcd8945">
+- <img width="554" alt="image" src="https://github.com/user-attachments/assets/23d5b21b-2d51-4f4d-8a40-19b15a1e1817">
 
 ---
 ### SelectionOutline 选中物体描边
