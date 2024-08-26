@@ -2,6 +2,11 @@
  shader学习工程  
 
 --- 
+### 噪声
+- 2D噪声扰动圆半径
+<img width="1135" alt="image" src="https://github.com/user-attachments/assets/a3819294-59b1-40cd-9952-c36a289bc19b">
+
+--- 
 ### SDF  
 ```hlsl
 // 圆 
@@ -20,7 +25,7 @@ float Circle(float2 st, float r)
 - Dispatch  执行
 - 线程和线程组的ID
 - GetData 从buffer中获取数据写回到ram中
-- <img width="554" alt="image" src="https://github.com/user-attachments/assets/23d5b21b-2d51-4f4d-8a40-19b15a1e1817">
+<img width="554" alt="image" src="https://github.com/user-attachments/assets/23d5b21b-2d51-4f4d-8a40-19b15a1e1817">
 
 ---
 ### SelectionOutline 选中物体描边
