@@ -6,6 +6,9 @@ Shader "Unlit/SDF_Circle"
         _Radius("Radius", Range(0, 1)) = 0.5
         _BackgroundColor ("Background Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _CircleColor("Circle Color", Color) = (0.0, 1.0, 0.0, 1.0)
+        _ChangeRateFactor("Change Rate Factor", float) = 0.1
+        _ChangSpeed("Change Speed", float) = 1.0
+        _ChangeRange("Change Range", Range(0.0, 1.0)) = 0.3
     }
     SubShader
     {
@@ -21,6 +24,7 @@ Shader "Unlit/SDF_Circle"
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
+            #include "../Base/Shaders/Noise.hlsl"
 
             struct appdata
             {
@@ -40,6 +44,9 @@ Shader "Unlit/SDF_Circle"
             float _Radius;
             fixed4 _BackgroundColor;
             fixed4 _CircleColor;
+            float _ChangeRateFactor;
+            float _ChangSpeed;
+            float _ChangeRange;
 
             float Circle(float2 st, float r)
             {
@@ -60,7 +67,9 @@ Shader "Unlit/SDF_Circle"
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                float d = Circle(i.uv, _Radius);
+                float2 dir = normalize(i.uv - float2(0.5, 0.5));
+                float noiseValue = noise(i.uv + dir * _ChangeRateFactor + _Time.yy * _ChangSpeed) * _ChangeRange;
+                float d = Circle(i.uv, _Radius + noiseValue);
                 col *= lerp(_BackgroundColor, _CircleColor, d);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
