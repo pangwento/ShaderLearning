@@ -1,4 +1,4 @@
-Shader "Base/ScreenCooord"
+Shader "Base/ScreenCoord"
 {
     Properties
     {
@@ -53,7 +53,12 @@ Shader "Base/ScreenCooord"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.screenUV);
+                float aspect = _ScreenParams.x / _ScreenParams.y;
+                float2 screenUV = i.screenUV;
+                screenUV.x = screenUV.x * aspect;
+                screenUV = TRANSFORM_TEX(screenUV, _MainTex);
+                fixed4 col = tex2D(_MainTex, screenUV);
+                
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;

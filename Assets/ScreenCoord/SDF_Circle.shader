@@ -5,6 +5,7 @@ Shader "Base/SDF_Circle"
         _MainTex ("Texture", 2D) = "white" {}
         _Color ("Color", Color) = (0,0.5,1,1)
         _BackgroundColor ("Background Color", Color) = (0,0,0,0)
+        _Radius("Radius", Range(0, 1.0)) = 0.2
     }
     SubShader
     {
@@ -61,6 +62,7 @@ Shader "Base/SDF_Circle"
             float4 _MainTex_ST;
             float4 _Color;
             float4 _BackgroundColor;
+            float _Radius;
             
             v2f vert (appdata v)
             {
@@ -74,8 +76,8 @@ Shader "Base/SDF_Circle"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 pixelPos = (i.scrPos.xy / i.scrPos.w) * _ScreenParams.xy;
-                float a = sdfCircle(pixelPos, float2(0.5,0.5) * _ScreenParams.xy, 100);
+                //float2 pixelPos = (i.scrPos.xy / i.scrPos.w) * _ScreenParams.xy;
+                float a = sdfCircle(i.scrPos.xy / i.scrPos.w, float2(0.5,0.5), _Radius);
                 float4 layer1 = render(a, _Color, fwidth(a) * 2);
                 return lerp(_BackgroundColor, layer1, layer1.a);
             }
