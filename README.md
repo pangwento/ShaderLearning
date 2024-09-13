@@ -1,6 +1,20 @@
 # ShaderLearning
  shader学习工程  
 
+---
+### Screenspace coordinates
+变换到裁剪空间 xy范围[-w,w]  
+变换到屏幕空间 xy范围[0,1]
+```hlsl
+o.vertex = UnityObjectToClipPos(v.vertex);
+o.screenUV = ComputeScreenPos(o.vertex)/o.vertex.w;
+// float2 position = o.vertex / o.vertex.w;
+// position = (position + 1) * 0.5;
+// o.screenUV = position.xy;
+// o.screenUV.y = 1 - o.screenUV.y;
+```
+<img width="554" alt="image" src="https://github.com/user-attachments/assets/371ee4e9-7a13-448a-be8c-451708fa66bd">
+
 --- 
 ### 噪声
 - 2D噪声扰动圆半径
