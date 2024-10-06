@@ -1,5 +1,13 @@
 # ShaderLearning
  shader学习工程  
+---
+### Batching 合批
++ srp batcher:相同shader变体，不使用MaterialPropertyBlock
++ gpu instancing:相同mesh, 相同material，可以使用MaterialPropertyBlock
++ dynamic batching:相同material, mesh有顶点属性数量限制
+  
+![image](https://github.com/user-attachments/assets/e1a46fb1-528a-4bf1-b265-fc531a0ca454)
+![image](https://github.com/user-attachments/assets/f0555b6f-f088-4815-9d3f-2f0d332ccdd7)
 
 ---
 ### Screenspace coordinates
