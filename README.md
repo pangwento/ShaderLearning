@@ -2,6 +2,7 @@
  shader学习工程  
 ---
 ### Batching 合批
+[unity合批介绍](https://github.com/pangwento/fuzzy-spoon/blob/main/Unity%20%E5%90%88%E6%89%B9.md)
 + srp batcher:相同shader变体，不使用MaterialPropertyBlock
 + gpu instancing:相同mesh, 相同material，可以使用MaterialPropertyBlock
 + dynamic batching:相同material, mesh有顶点属性数量限制
